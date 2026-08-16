@@ -1,0 +1,6 @@
+@NovelsAPI_HostAddress = http://localhost:5161
+
+GET {{NovelsAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
