@@ -1,4 +1,1 @@
-﻿namespace Novels.Core.DTOs.Auth
-{
-    public record ReaderDto { }
-}
+﻿namespace Novels.Core.DTOs.Auth { }

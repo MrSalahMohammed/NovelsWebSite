@@ -1,7 +1,9 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Novels.Core;
+using Novels.Core.Mapper;
 using Novels.Core.Validators.Auth;
+using Novels.Core.Validators.Novel;
 using Novels.Core.Validators.Reader;
 using Novels.Domain.Entities;
 using Novels.Infrastructure;
@@ -26,11 +28,18 @@ builder
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.AddAutoMapper(typeof(NovelMappingProfile).Assembly);
+builder.Services.AddAutoMapper(typeof(ReadingProgressMappingProfile).Assembly);
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 builder.Services.AddCoreServices(builder.Configuration);
 
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<NovelValidator>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<ReviewRequestValidator>();
 

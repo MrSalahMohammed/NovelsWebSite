@@ -1,11 +1,11 @@
-﻿using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Novels.Core.Interfaces.Services;
 using Novels.core.Security;
+using Novels.Core.Interfaces.Services;
 using Novels.Core.Services;
+using System.Text;
 
 namespace Novels.Core
 {
@@ -21,6 +21,13 @@ namespace Novels.Core
             services.AddScoped<IAuthService, AuthService>();
 
             services.AddScoped<ITokenService, JwtTokenService>();
+
+            services.AddScoped<INovelService, NovelService>();
+            services.AddScoped<IAuthorService, AuthorService>();
+            services.AddScoped<IFavoriteService, FavoriteService>();
+            services.AddScoped<IReadingProgressService, ReadingProgressService>();
+            services.AddScoped<IReviewService, ReviewService>();
+            services.AddScoped<IAdminService, AdminService>();
 
             var jwtSection = configuration.GetSection("Jwt");
             services

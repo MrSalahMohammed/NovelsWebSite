@@ -8,7 +8,12 @@
         string? CoverImageUrl
     );
 
-    public record ReadingProgressResponse(int NovelId, int LastChapterId, DateTime LastReadAt);
+    public record ReadingProgressResponse(
+        int NovelId,
+        int LastChapterId,
+        string LastChapterName,
+        DateTime LastReadAt
+    );
 
     public record UpdateProgressRequest(int ChapterId);
 
@@ -19,6 +24,7 @@
     public record UpdateReaderRequest(
         string FName,
         string LName,
+        string Email,
         string? RecoveryEmail,
         string? PhoneNumber
     );
@@ -31,5 +37,28 @@
         int LastChapterId,
         string LastChapterName,
         DateTime LastReadAt
+    );
+
+    public record ReadingProgressDto(
+        int Id,
+        int NovelId,
+        string NovelName,
+        string NovelSlug,
+        string? NovelCoverImageUrl,
+        int LastChapterId,
+        string LastChapterName,
+        int LastChapterNumber,
+        DateTime LastReadAt
+    );
+
+    public record ReviewDto(
+        int Id,
+        int NovelId,
+        int ReaderId,
+        string ReaderName,
+        string? ReaderAvatarUrl,
+        int Score,
+        string? Comment,
+        DateTime CreatedAt
     );
 }
